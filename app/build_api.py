@@ -206,7 +206,7 @@ itemArgs.add_argument("price", type=float)
 itemArgs.add_argument("category", type=str)
 itemArgs.add_argument("description", type=str)
 itemArgs.add_argument("imageUrl", type=str)
-itemArgs.add_argument("newBuildId", type=str)
+itemArgs.add_argument("buildId", type=str)
 
 
 def validateBuildID(id):
@@ -277,24 +277,19 @@ def validateArgs(args, id, method):
     elif method == "patch":
         item = ItemsModel.query.filter_by(id=args['id'], buildId=id).first()
         if item:
-            if args['name']:
+            if args['name'] or args['price'] or args['category'] or args['imageUrl'] or args['description'] and args['buildId']:
                 item.name = args['name']
-            elif args['price']:
                 item.price = args['price']
-            elif args['category']:
                 item.category = args['category']
-            elif args['description']:
                 item.description = args['description']
-            elif args['imageUrl']:
                 item.imageUrl = args['imageUrl']
-            elif args['newBuildId']:
-                item.buildId = args['newBuildId']
+                item.buildId = args['buildId']
             else:
                 return {"status": "Must Provide A Parameter"}
             db.session.commit()
         else:
             return {"status": "Invalid Item Id Specified !"}
-        return {"status": "ok", 'item':item}
+        return {"status": "ok", 'item': item}
 
 
 
