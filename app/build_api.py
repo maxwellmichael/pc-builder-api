@@ -148,11 +148,9 @@ def validateId(id, reqType):
 
 def applyPatch(args):
     build = BuildsModel.query.filter_by(id=args['id']).first()
-    if args['name']:
+    if args['name'] or args['totalValue'] or args['dateCreated']:
         build.name = args['name']
-    elif args['totalValue']:
         build.totalValue = args['totalValue']
-    elif args['dateCreated']:
         build.dateCreated = args['dateCreated']
     else:
         return {"status": "No Params were Specified"}

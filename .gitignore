@@ -9,5 +9,6 @@ out
 gen
 app/__pycache__
 app/__pucache__/
-database.db
+app/database.db
+.env
 

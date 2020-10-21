@@ -11,6 +11,7 @@ flask-restful = "*"
 flask-sqlalchemy = "*"
 scrapy = "*"
 flask-cors = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.8"
