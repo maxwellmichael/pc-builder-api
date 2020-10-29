@@ -10,5 +10,5 @@ gen
 app/__pycache__
 app/__pucache__/
 app/database.db
-.env
+
 

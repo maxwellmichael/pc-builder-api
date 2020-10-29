@@ -52,6 +52,7 @@ app.config['JWT_COOKIE_SECURE'] = False # True if Connection is https
 app.config['JWT_ACCESS_CSRF_HEADER_NAME'] = "csrf_access_token"
 app.config['JWT_REFRESH_CSRF_HEADER_NAME'] = "csrf_refresh_token"
 app.config['JWT_COOKIE_DOMAIN'] = "pcbuilder.com"
+app.config['DEBUG'] = False
 db = SQLAlchemy(app)
 
 from app.build_api import Build, Item, UserLogin, UserLogout, UserRegister, RefreshAccessToken

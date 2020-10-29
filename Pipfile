@@ -17,6 +17,7 @@ flask-bcrypt = "*"
 uuid = "*"
 marshmallow = "*"
 flask-jwt-extended = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
