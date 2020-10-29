@@ -18,6 +18,7 @@ uuid = "*"
 marshmallow = "*"
 flask-jwt-extended = "*"
 gunicorn = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.8"
