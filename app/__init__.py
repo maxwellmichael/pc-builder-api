@@ -67,5 +67,5 @@ api.add_resource(RefreshAccessToken, "/refreshaccesstoken")
 
 
 
-CORS(app,resources={r"/*": {"origins": ["https://react-pc-builder-api.herokuapp.com", "http://react.pc-builder-api.herokuapp.com:3000", "http://192.168.1.2:3000", "localhost:3000"]}},
+CORS(app,resources={r"/*": {"origins": ["https://pc-builder-main.herokuapp.com/", "http://react.pc-builder-api.herokuapp.com:3000", "http://192.168.1.2:3000", "localhost:3000"]}},
      supports_credentials=True)
