@@ -10,7 +10,6 @@ from flask_jwt_extended import (
 )
 
 
-
 class UsersModel(db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
@@ -36,21 +35,18 @@ class UsersModel(db.Model):
         self.lastOnline = datetime.datetime.now()
         self.publicId = str(uuid.uuid4())
 
-
-
+    # Creates aand Saves User Query in the Database
     @staticmethod
     def userRegister(name, email, password):
-            user = UsersModel.query.filter_by(email=email).first()
-            if user:
-                return {"status": None, "message": "Email Already Exists!"}
-            user = UsersModel(name, email, password)
-            db.session.add(user)
-            db.session.commit()
-            return {"status": "ok"}
+        user = UsersModel.query.filter_by(email=email).first()
+        if user:
+            return {"status": None, "message": "Email Already Exists!"}
+        user = UsersModel(name, email, password)
+        db.session.add(user)
+        db.session.commit()
+        return {"status": "ok"}
 
-
-
-
+    # When User Login is Successful returns access token and refresh token
     @staticmethod
     def userLogin(email, password):
         user = UsersModel.query.filter_by(email=email).first()
@@ -58,7 +54,6 @@ class UsersModel(db.Model):
             return {"status": None, "message": "Invalid Email Specified", "status_code": 404}
 
         hash_result = check_password_hash(user.password, password)
-        print(hash_result)
         if hash_result:
             user.lastOnline = datetime.datetime.now()
             user.isOnline = True
@@ -68,7 +63,7 @@ class UsersModel(db.Model):
                 'access_token': create_access_token(identity=user.publicId),
                 'refresh_token': create_refresh_token(identity=user.publicId)
             }
-            #token = jwt.encode({"public_id": user.publicId, "exp": datetime.datetime.utcnow()+datetime.timedelta(minutes=1)},app.config["SECRET_KEY"])
+            # token = jwt.encode({"public_id": user.publicId, "exp": datetime.datetime.utcnow()+datetime.timedelta(minutes=1)},app.config["SECRET_KEY"])
             return {"status": "ok", "tokens": tokens, "status_code": 200}
         else:
             return {"status": None, "message": "Invalid Password", "status_code": 404}
