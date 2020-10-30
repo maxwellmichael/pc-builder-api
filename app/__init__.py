@@ -51,7 +51,6 @@ app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 app.config['JWT_COOKIE_SECURE'] = False # True if Connection is https
 app.config['JWT_ACCESS_CSRF_HEADER_NAME'] = "csrf_access_token"
 app.config['JWT_REFRESH_CSRF_HEADER_NAME'] = "csrf_refresh_token"
-app.config['JWT_COOKIE_DOMAIN'] = "pc-builder-api.herokuapp.com"
 app.config['DEBUG'] = False
 db = SQLAlchemy(app)
 
@@ -67,5 +66,5 @@ api.add_resource(RefreshAccessToken, "/refreshaccesstoken")
 
 
 
-CORS(app,resources={r"/*": {"origins": "http://react.pc-builder-api.herokuapp.com:3000"}},
+CORS(app,resources={r"/*": {"origins": ["http://react.pc-builder-api.herokuapp.com:3000", "http://192.168.1.2:3000", "localhost:3000"]}},
      supports_credentials=True)
