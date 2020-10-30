@@ -348,7 +348,7 @@ class UserLogin(Resource):
         if not result['status']:
             abort(result['status_code'], message=result['message'])
 
-        resp = jsonify({'login': True})
+        resp = jsonify({'login': True, "access-token":result['tokens']['access_token']})
         set_refresh_cookies(resp, result['tokens']['refresh_token'])
         set_access_cookies(resp, result['tokens']['access_token'])
         return resp
@@ -390,8 +390,11 @@ class RefreshAccessToken(Resource):
         if not current_user:
             return abort(401, message="Invalid Refresh Token")
 
-        resp = jsonify({'Refreshed': True})
         new_access_token = create_access_token(identity=current_user)
+        resp = jsonify({'Refreshed': True, "access-token": new_access_token})
+
         set_access_cookies(resp, new_access_token)
         print(current_user)
         return resp
+
+
