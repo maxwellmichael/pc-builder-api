@@ -97,5 +97,5 @@ def expired_token_callback(callback):
 
 
 CORS(app, resources={
-    r"/*": {"origins": ["https://pc-builder-main.herokuapp.com", "http://react.pcbuilder.com:3000", "http://pcbuilder.com:3000", "http://192.168.1.3:3000", "localhost:3000"]}},
+    r"/*": {"origins": ["http://pc-builder-main.herokuapp.com", "http://react.pcbuilder.com:3000", "http://pcbuilder.com:3000", "http://192.168.1.3:3000", "localhost:3000"]}},
      supports_credentials=True)
