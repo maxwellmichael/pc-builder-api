@@ -57,7 +57,7 @@ app.config['JWT_ACCESS_CSRF_COOKIE_NAME'] = "csrf_access_token"
 app.config['JWT_REFRESH_CSRF_COOKIE_NAME'] = "csrf_refresh_token"
 app.config['DEBUG'] = False
 # Deployment
-app.config['JWT_COOKIE_DOMAIN'] = "herokuapp.com"
+app.config['JWT_COOKIE_DOMAIN'] = ".herokuapp.com"
 #app.config['JWT_COOKIE_SECURE'] = True
 
 # Development
