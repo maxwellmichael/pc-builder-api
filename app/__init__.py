@@ -57,7 +57,7 @@ app.config['JWT_ACCESS_CSRF_COOKIE_NAME'] = "csrf_access_token"
 app.config['JWT_REFRESH_CSRF_COOKIE_NAME'] = "csrf_refresh_token"
 app.config['DEBUG'] = False
 # Deployment
-app.config['JWT_COOKIE_DOMAIN'] = "pc-builder-main.herokuapp.com"
+app.config['JWT_COOKIE_DOMAIN'] = "herokuapp.com"
 #app.config['JWT_COOKIE_SECURE'] = True
 
 # Development
@@ -97,5 +97,5 @@ def expired_token_callback(callback):
 
 
 CORS(app, resources={
-    r"/*": {"origins": ["http://pc-builder-main.herokuapp.com", "http://react.pcbuilder.com:3000", "http://pcbuilder.com:3000", "http://192.168.1.3:3000", "localhost:3000"]}},
+    r"/*": {"origins": ["https://pc-builder-main.herokuapp.com", "http://react.pcbuilder.com:3000", "http://pcbuilder.com:3000", "http://192.168.1.3:3000", "localhost:3000"]}},
      supports_credentials=True)
