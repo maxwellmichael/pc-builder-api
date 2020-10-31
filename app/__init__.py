@@ -47,16 +47,20 @@ app.config['JWT_SECRET_KEY'] = JWT_SECRET_KEY
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = JWT_ACCESS_TOKEN_EXPIRES
 app.config['JWT_REFRESH_TOKEN_EXPIRES'] = JWT_REFRESH_TOKEN_EXPIRES
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
-app.config['JWT_COOKIE_CSRF_PROTECT'] = False
+app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 app.config['JWT_COOKIE_SECURE'] = False  # True if Connection is https
 app.config['JWT_ACCESS_CSRF_HEADER_NAME'] = "csrf_access_token"
 app.config['JWT_REFRESH_CSRF_HEADER_NAME'] = "csrf_refresh_token"
+
+app.config['JWT_CSRF_IN_COOKIES'] = True
+app.config['JWT_ACCESS_CSRF_COOKIE_NAME'] = "csrf_access_token"
+app.config['JWT_REFRESH_CSRF_COOKIE_NAME'] = "csrf_refresh_token"
 app.config['DEBUG'] = False
 # Deployment
-app.config['JWT_COOKIE_DOMAIN'] = "herokuapp.com"
+app.config['JWT_COOKIE_DOMAIN'] = ".herokuapp.com"
 
 # Development
-# app.config['JWT_COOKIE_DOMAIN'] = "pcbuilder.com"
+#app.config['JWT_COOKIE_DOMAIN'] = ".pcbuilder.com"
 
 
 db = SQLAlchemy(app)
@@ -92,5 +96,5 @@ def expired_token_callback(callback):
 
 
 CORS(app, resources={
-    r"/*": {"origins": ["https://pc-builder-main.herokuapp.com", "http://192.168.1.2:3000", "localhost:3000"]}},
+    r"/*": {"origins": ["https://pc-builder-main.herokuapp.com", "http://react.pcbuilder.com:3000", "http://pcbuilder.com:3000", "http://192.168.1.3:3000", "localhost:3000"]}},
      supports_credentials=True)

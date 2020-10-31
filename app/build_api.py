@@ -348,7 +348,7 @@ class UserLogin(Resource):
         if not result['status']:
             abort(result['status_code'], message=result['message'])
 
-        resp = jsonify({'login': True, "access-token":result['tokens']['access_token']})
+        resp = jsonify({'login': True, "access-token": result['tokens']['access_token']})
         set_refresh_cookies(resp, result['tokens']['refresh_token'])
         set_access_cookies(resp, result['tokens']['access_token'])
         return resp
